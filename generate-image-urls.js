@@ -28,6 +28,7 @@ const pcImages = walkDir(path.join(rootDir, "pc"));
 const phoneImages = walkDir(path.join(rootDir, "phone"));
 
 // === 1. 生成 functions/api.js ===
+// 修改：构造 Response 添加 Cache-Control 头，解决重定向缓存问题
 const apiJsContent = `
 export function onRequestGet(context) {
   const pc = ${JSON.stringify(pcImages)};
@@ -38,7 +39,15 @@ export function onRequestGet(context) {
   const url = list.length > 0
     ? "${imageBaseUrl}/" + list[Math.floor(Math.random() * list.length)]
     : "${imageBaseUrl}/notfound.jpg";
-  return Response.redirect(url, 302);
+    
+  return new Response(null, {
+    status: 302,
+    headers: {
+      "Location": url,
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
 }
 `.trim();
 
