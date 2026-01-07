@@ -11,7 +11,12 @@
 - **自动化构建**：构建时自动扫描资源并生成 API 逻辑与预览索引页。
 
 ## 🚀 快速部署
+### 方式一：一键部署
+无需手动配置，点击下方按钮即可直接将本项目部署到腾讯云 EdgeOne Pages：
 
+[![Deploy to EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://console.cloud.tencent.com/edgeone/pages/new?repository-url=https://github.com/kafuneri/random-picture-edgeone&build-command=npm%20run%20build)
+
+### 方式二：手动部署
 1. **Fork 本仓库**
    点击右上角的 `Fork` 按钮，将项目复制到您的 GitHub 账户。
 
